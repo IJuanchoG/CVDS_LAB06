@@ -101,25 +101,29 @@
                <failOnMissingWebXml>false</failOnMissingWebXml>
            </configuration>
        </plugin>
-       
-
-       <!-- Tomcat embedded plugin. -->
        <plugin>
-           <groupId>org.apache.tomcat.maven</groupId>
-           <artifactId>tomcat7-maven-plugin</artifactId>
-           <version>2.2</version>
-           <configuration>
-               <port>8080</port>
-               <path>/</path>
-           </configuration>
-       </plugin>
-	   <!-- Plugin configuration for Heroku compatibility. -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>2.1</version>
-            <executions>
-                <execution>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+           <version>2.6</version>
+           <executions>
+               <execution>
+                   <phase>validate</phase>
+                   <goals>
+                       <goal>copy</goal>
+                   </goals>
+                   <configuration>
+                       <silent>true</silent>
+                       <artifactItems>
+                           <artifactItem>
+                               <groupId>javax</groupId>
+                               <artifactId>javaee-endorsed-api</artifactId>
+                               <version>7.0</version>
+                               <type>jar</type>
+                           </artifactItem>
+                       </artifactItems>
+                   </configuration>
+               </execution>
+			   <execution>
                     <phase>package</phase>
                     <goals>
                         <goal>copy</goal>
@@ -136,9 +140,19 @@
 
                     </configuration>
                 </execution>
+           </executions>
+       </plugin>
 
-            </executions>
-        </plugin>
+       <!-- Tomcat embedded plugin. -->
+       <plugin>
+           <groupId>org.apache.tomcat.maven</groupId>
+           <artifactId>tomcat7-maven-plugin</artifactId>
+           <version>2.2</version>
+           <configuration>
+               <port>8080</port>
+               <path>/</path>
+           </configuration>
+       </plugin>
       </plugins>
     </pluginManagement>
   </build>
