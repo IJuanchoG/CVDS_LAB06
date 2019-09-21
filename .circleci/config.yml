@@ -30,7 +30,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: mvn dependency:go-offline
+      - run: mvn dependency:go-offline          
 
       - save_cache:
           paths:
@@ -39,3 +39,12 @@ jobs:
 
       # run tests!
       - run: mvn integration-test
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$77da8895-770d-4c13-8ae9-c69bc7d94453@git.heroku.com/$gameguess.git master

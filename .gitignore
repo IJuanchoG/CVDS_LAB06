@@ -1,2 +1,9 @@
-target.DS_Store/nbproject/.idea*.iml
+target
+.DS_Store
+/nbproject/
+.idea
+*.iml
 .circleci
+/FacesServlet/target/
+/Game/target/
+/Game/nbproject/
