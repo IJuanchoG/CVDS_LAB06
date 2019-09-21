@@ -101,13 +101,24 @@
                <failOnMissingWebXml>false</failOnMissingWebXml>
            </configuration>
        </plugin>
+      
+       <!-- Tomcat embedded plugin. -->
        <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-dependency-plugin</artifactId>
-           <version>2.6</version>
-           <executions>
-               </execution>
-			   <execution>
+           <groupId>org.apache.tomcat.maven</groupId>
+           <artifactId>tomcat7-maven-plugin</artifactId>
+           <version>2.2</version>
+           <configuration>
+               <port>8080</port>
+               <path>/</path>
+           </configuration>
+       </plugin>
+	   <!-- Plugin configuration for Heroku compatibility. -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.6</version>
+            <executions>
+                <execution>
                     <phase>package</phase>
                     <goals>
                         <goal>copy</goal>
@@ -124,19 +135,9 @@
 
                     </configuration>
                 </execution>
-           </executions>
-       </plugin>
 
-       <!-- Tomcat embedded plugin. -->
-       <plugin>
-           <groupId>org.apache.tomcat.maven</groupId>
-           <artifactId>tomcat7-maven-plugin</artifactId>
-           <version>2.2</version>
-           <configuration>
-               <port>8080</port>
-               <path>/</path>
-           </configuration>
-       </plugin>
+            </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
