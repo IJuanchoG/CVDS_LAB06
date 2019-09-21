@@ -48,4 +48,4 @@ jobs:
       staging:
         branch: master
         heroku: 
-          appname: gameguess
+          appname: pdsw-circleci-demo
