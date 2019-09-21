@@ -1,9 +1,10 @@
+  
 machine:
   java:
-	version: oraclejdk8
+    version: oraclejdk8
 
 deployment:
   staging:
-	branch: master
-	heroku: 
-	  appname: gameguess
+    branch: master
+    heroku: 
+      appname: gameguess
