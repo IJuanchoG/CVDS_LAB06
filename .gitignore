@@ -3,7 +3,7 @@ target
 /nbproject/
 .idea
 *.iml
-.circleci
+/.circleci/
 /FacesServlet/target/
 /Game/target/
 /Game/nbproject/
